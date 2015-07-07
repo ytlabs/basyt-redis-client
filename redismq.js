@@ -4,7 +4,7 @@ module.exports = {
     createClient: function(){
         var pubSubClient = redis.createClient();
         var queueingClient = redis.createClient();
-        return {
+        var client = {
             publish: function(channel, obj){
                 return pubSubClient.publish(channel, JSON.stringify(obj), function(err, data){
                     if(err) console.log(err);
@@ -30,15 +30,30 @@ module.exports = {
             push: function(queue, data) {
                 return queueingClient.rpush(queue,JSON.stringify(data));
             },
-            onQueue: function(queue, callback) {
+            onceQueue: function(queue, callback) {
                 return queueingClient.blpop(queue,0, function(err, data){
                     if(!err) callback(JSON.parse(data[1]));
+                });
+            },
+            onQueue: function(queue, callback) {
+                return queueingClient.blpop(queue,0, function(err, data){
+                    if(!err) {
+                        callback(JSON.parse(data[1]));
+                        client.onQueue(queue, callback);
+                    }
                 });
             },
             quit: function(){
                 pubSubClient.quit();
                 queueingClient.quit();
+            },
+            getPubSubClient: function() {
+                return pubSubClient
+            },
+            getQueueingClient: function() {
+                return pubSubClient
             }
         }
+        return client;
     }
 };
