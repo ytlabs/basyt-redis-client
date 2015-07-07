@@ -1,0 +1,15 @@
+{
+  "name": "yt.redismq",
+  "version": "0.1.0",
+  "description": "",
+  "main": "redismq.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://ytlabs.com:7990/scm/nod/redismq.git"
+  },
+  "author": "kamil",
+  "license": "MIT"
+}
