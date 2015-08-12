@@ -1,16 +1,13 @@
 {
-  "name": "yt.redismq",
+  "name": "basyt-redis-client",
   "version": "0.1.0",
-  "description": "",
-  "main": "redismq.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Simple redis client interface for event messaging and queue",
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "http://ytlabs.com:7990/scm/nod/redismq.git"
+    "url": "https://github.com/ytlabs/basyt-redis-client.git"
   },
-  "author": "kamil",
+  "author": "kokeksibir",
   "license": "MIT",
   "dependencies": {
     "redis": "^0.12.1"

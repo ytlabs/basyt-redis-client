@@ -1,6 +1,6 @@
-# yt.redismq
+# basyt-redis-client
 
-redismq, node redis modülünü kullanan basit bir messaging queue client implementasyonudur.
+basyt-redis-client, node redis modülünü kullanan basit bir messaging queue client implementasyonudur.
 
 ## API
 
@@ -20,7 +20,7 @@ Message Queue için istemci yaratır. Aşağıda İstemcinin sunduğu metodlar v
 
 `channel` isimli kanalda `obj` verisini içeren paket yayınlar. Bir kanalda yayın yapmak için kanala üye olmaya gerek YOKTUR.
 
-#### onMessage(callback) 
+#### onMessage(callback)
 
 istemcinin üye olduğu kanallarda herhangi bir paket yayınlandığında geldiğinde `callback` fonsiyonunu çağırtır. Fonksiyonun ilk argümanı kanal ismi, ikincisi yayınlanan pakettir.
 
