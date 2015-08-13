@@ -20,12 +20,12 @@ module.exports = {
                 return pubSubClient.unsubscribe(channel);
             },
             onMessage: function(callback) {
-                return pubSubClient.on('message', function(channel, data){
+                pubSubClient.on('message', function(channel, data){
                     callback(channel, JSON.parse(data));
-                })
-                return pubSubClient.on('pmessage', function(pattern, channel, data){
-                    callback(channel, JSON.parse(data));
-                })
+                });
+                pubSubClient.on('pmessage', function(pattern, channel, data){
+                    callback(channel, JSON.parse(data), pattern);
+                });
             },
             push: function(queue, data) {
                 return queueingClient.rpush(queue,JSON.stringify(data));
@@ -53,7 +53,7 @@ module.exports = {
             getQueueingClient: function() {
                 return pubSubClient
             }
-        }
+        };
         return client;
     }
 };
